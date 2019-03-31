@@ -85,7 +85,7 @@ def accurate_place(card_img_hsv, limit1, limit2, color):
 
 
 def img_findContours(img_contours):
-    img, contours, hierarchy = cv2.findContours(img_contours, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+    contours, hierarchy = cv2.findContours(img_contours, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
     contours = [cnt for cnt in contours if cv2.contourArea(cnt) > Min_Area]
     print("findContours len = ", len(contours))
     # 排除面积最小的点
