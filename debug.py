@@ -6,6 +6,8 @@ import numpy as np
 #用于中间环节对处理图像的输出
 
 def img_show(filename):
+    if filename.dtype == "float32":
+        filename = filename.astype(np.uint8)
     cv2.imshow("img_show", filename)
     cv2.waitKey(0)
 
