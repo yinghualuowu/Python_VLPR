@@ -20,24 +20,6 @@ def img_read(filename):
     # 以uint8方式读取filename 放入imdecode中，cv2.IMREAD_COLOR读取彩色照片
 
 
-def find_waves(threshold, histogram):
-    up_point = -1  # 上升点
-    is_peak = False
-    if histogram[0] > threshold:
-        up_point = 0
-        is_peak = True
-    wave_peaks = []
-    for i, x in enumerate(histogram):
-        if is_peak and x < threshold:
-            if i - up_point > 2:
-                is_peak = False
-                wave_peaks.append((up_point, i))
-        elif not is_peak and x >= threshold:
-            is_peak = True
-            up_point = i
-    if is_peak and up_point != -1 and i - up_point > 4:
-        wave_peaks.append((up_point, i))
-    return wave_peaks
 
 
 def point_limit(point):
@@ -220,10 +202,7 @@ def img_color(card_imgs):
         if color == "green":
             card_imgs[card_index] = card_img
         else:
-            card_imgs[card_index] = card_img[yl:yh, xl:xr] if color != "green" or yl < (yh - yl) // 4 else card_img[
-                                                                                                           yl - (
-                                                                                                                   yh - yl) // 4:yh,
-                                                                                                           xl:xr]
+            card_imgs[card_index] = card_img[yl:yh, xl:xr] if color != "green" or yl < (yh - yl) // 4 else card_img[yl - (yh - yl) // 4:yh,xl:xr]
 
         if need_accurate:
             card_img = card_imgs[card_index]
@@ -240,10 +219,7 @@ def img_color(card_imgs):
         if color == "green":
             card_imgs[card_index] = card_img
         else:
-            card_imgs[card_index] = card_img[yl:yh, xl:xr] if color != "green" or yl < (yh - yl) // 4 else card_img[
-                                                                                                           yl - (
-                                                                                                                   yh - yl) // 4:yh,
-                                                                                                           xl:xr]
+            card_imgs[card_index] = card_img[yl:yh, xl:xr] if color != "green" or yl < (yh - yl) // 4 else card_img[yl - (yh - yl) // 4:yh,xl:xr]
 
     return colors, card_imgs
 
