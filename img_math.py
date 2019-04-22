@@ -202,10 +202,7 @@ def img_color(card_imgs):
         if color == "green":
             card_imgs[card_index] = card_img
         else:
-            card_imgs[card_index] = card_img[yl:yh, xl:xr] if color != "green" or yl < (yh - yl) // 4 else card_img[
-                                                                                                           yl - (
-                                                                                                                   yh - yl) // 4:yh,
-                                                                                                           xl:xr]
+            card_imgs[card_index] = card_img[yl:yh, xl:xr] if color != "green" or yl < (yh - yl) // 4 else card_img[yl - (yh - yl) // 4:yh,xl:xr]
 
         if need_accurate:
             card_img = card_imgs[card_index]
@@ -222,10 +219,7 @@ def img_color(card_imgs):
         if color == "green":
             card_imgs[card_index] = card_img
         else:
-            card_imgs[card_index] = card_img[yl:yh, xl:xr] if color != "green" or yl < (yh - yl) // 4 else card_img[
-                                                                                                           yl - (
-                                                                                                                   yh - yl) // 4:yh,
-                                                                                                           xl:xr]
+            card_imgs[card_index] = card_img[yl:yh, xl:xr] if color != "green" or yl < (yh - yl) // 4 else card_img[yl - (yh - yl) // 4:yh,xl:xr]
 
     return colors, card_imgs
 
