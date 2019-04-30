@@ -70,7 +70,7 @@ class CardPredictor:
                     # chars_label.append(1)
                     chars_label.append(root_int)
 
-            chars_train = list(map(deskew, chars_train))
+            chars_train = list(map(img_recognition.deskew, chars_train))
             chars_train = img_recognition.preprocess_hog(chars_train)
             # chars_train = chars_train.reshape(-1, 20, 20).astype(np.float32)
             chars_label = np.array(chars_label)
@@ -93,7 +93,7 @@ class CardPredictor:
                     chars_train.append(digit_img)
                     # chars_label.append(1)
                     chars_label.append(index)
-            chars_train = list(map(deskew, chars_train))
+            chars_train = list(map(img_recognition.deskew, chars_train))
             chars_train = img_recognition.preprocess_hog(chars_train)
             # chars_train = chars_train.reshape(-1, 20, 20).astype(np.float32)
             chars_label = np.array(chars_label)
